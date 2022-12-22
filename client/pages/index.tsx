@@ -1,10 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
+import { Navbar, Welcome, Footer, Services, Transactions } from "../components";
 
-const inter = Inter({ subsets: ["latin"] });
+const Index = () => {
+  return (
+    <div className="min-h-screen">
+      <div className="gradient-bg-welcome">
+        <Navbar />
+        <Welcome />
+      </div>
+      <Services />
+      <Transactions />
+      <Footer />
+    </div>
+  );
+};
 
-export default function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+export default Index;
