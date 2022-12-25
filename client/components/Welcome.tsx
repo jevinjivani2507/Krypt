@@ -3,6 +3,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
+import { TransactionContext } from "../context/TransactionContext";
 import { Loader } from ".";
 
 const companyCommonStyles =
@@ -34,16 +35,24 @@ const Input = ({
 );
 
 const Welcome = () => {
-  const connectWallet = () => {
-    console.log("Connect Wallet");
-  };
+  const {
+    connectWallet,
+    currentAccount,
+    formData,
+    setFormData,
+    handleChange,
+    sendTransaction,
+  } = useContext(TransactionContext);
 
-  const handleSubmit = () => {
-    console.log("Submit");
-  };
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    const { addressTo, amount, keyword, message } = formData;
+    e.preventDefault();
 
-  const handleChange = () => {
-    console.log("Change");
+    if (!addressTo || !amount || !keyword || !message) {
+      return;
+    }
+
+    sendTransaction();
   };
 
   return (
@@ -57,14 +66,18 @@ const Welcome = () => {
             Explore the crypto world. Buy and sell cryptocurrencies easily on
             Krypto.
           </p>
-          <button
-            type="button"
-            onClick={connectWallet}
-            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
-          >
-            <AiFillPlayCircle className="text-white mr-2" />
-            <p className="text-white text-base font-semibold">Connect Wallet</p>
-          </button>
+          {!currentAccount && (
+            <button
+              type="button"
+              onClick={connectWallet}
+              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+            >
+              <AiFillPlayCircle className="text-white mr-2" />
+              <p className="text-white text-base font-semibold">
+                Connect Wallet
+              </p>
+            </button>
+          )}
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
               Reliability
@@ -107,36 +120,36 @@ const Welcome = () => {
               name="addressTo"
               type="text"
               handleChange={handleChange}
-              value={""}
+              value={formData.addressTo}
             />
             <Input
               placeholder="Amount (ETH)"
               name="amount"
               type="number"
               handleChange={handleChange}
-              value={""}
+              value={formData.amount}
             />
             <Input
               placeholder="Keyword (Gif)"
               name="keyword"
               type="text"
               handleChange={handleChange}
-              value={""}
+              value={formData.keyword}
             />
             <Input
               placeholder="Enter Message"
               name="message"
               type="text"
               handleChange={handleChange}
-              value={""}
+              value={formData.message}
             />
 
             <div className="h-[1px] w-full bg-gray-400 my-2" />
 
             {false ? (
               <Loader />
-              // "Loading"
             ) : (
+              // "Loading"
               <button
                 type="button"
                 onClick={handleSubmit}
@@ -144,7 +157,7 @@ const Welcome = () => {
               >
                 Send now
               </button>
-            )} 
+            )}
           </div>
         </div>
       </div>
