@@ -84,25 +84,24 @@ export const TransactionProvider = ({ children }) => {
           ],
         });
 
-        console.log(transactionsContract);
         const transactionHash = await transactionsContract.addToBlockchainnnn(
           addressTo,
           parsedAmount,
           message,
-          keyword,
+          keyword
         );
-        console.log(transactionHash);
+
         setIsLoading(true);
         console.log(`Loading - ${transactionHash.hash}`);
         await transactionHash.wait();
         console.log(`Success - ${transactionHash.hash}`);
         setIsLoading(false);
 
-        // const transactionsCount =
-        //   await transactionsContract.getTransactionCount();
+        const transactionsCount =
+          await transactionsContract.getTransactionCount();
 
-        // setTransactionCount(transactionsCount.toNumber());
-        // window.location.reload();
+        setTransactionCount(transactionsCount.toNumber());
+        window.location.reload();
       } else {
         console.log("No ethereum object");
       }
