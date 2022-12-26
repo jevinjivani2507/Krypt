@@ -9,21 +9,7 @@ import { Loader } from ".";
 const companyCommonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
-interface InputProps {
-  placeholder: string;
-  name: string;
-  type: string;
-  value: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>, name: string) => void;
-}
-
-const Input = ({
-  placeholder,
-  name,
-  type,
-  value,
-  handleChange,
-}: InputProps) => (
+const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
     placeholder={placeholder}
     type={type}
@@ -44,14 +30,12 @@ const Welcome = () => {
     sendTransaction,
   } = useContext(TransactionContext);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    const { addressTo, amount, keyword, message } = formData;
+  const handleSubmit = (e) => {
     e.preventDefault();
-
+    const { addressTo, amount, keyword, message } = formData;
     if (!addressTo || !amount || !keyword || !message) {
       return;
     }
-
     sendTransaction();
   };
 
