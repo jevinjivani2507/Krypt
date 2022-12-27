@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Key, useContext } from "react";
 
 import { TransactionContext } from "../context/TransactionContext";
 
@@ -68,7 +68,7 @@ const TransactionsCard = ({
           )}
         </div>
         <Image
-          src={ `https://res.cloudinary.com/demo/image/fetch/` + (gifUrl || url)}
+          src={gifUrl || url}
           alt="nature"
           className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
           width={500}
@@ -97,8 +97,8 @@ const Transactions = () => {
           </h3>
         )}
         <div className="flex flex-wrap justify-center items-center mt-10">
-          {[...dummyData].reverse().map((transaction, i) => (
-            <TransactionsCard keyword={""} key={i} {...transaction} />
+          {transactions.reverse().map((transaction: JSX.IntrinsicAttributes & TransactionsCardProps, i: Key | null | undefined) => (
+            <TransactionsCard key={i} {...transaction} />
           ))}
         </div>
       </div>
