@@ -16,7 +16,7 @@ const CustomButton = ({ btnType, title, handleClick, styles, logo }: Props) => {
   return (
     <button
       type={btnType}
-      className={`flex justify-start items-center gap-2 font-epilogue truncate max-w-[200px] font-semibold text-[16px] leading-[26px] bg-purple-600 text-white min-h-[52px] px-4 rounded-full ${styles}`}
+      className={`flex justify-start items-center gap-2 font-epilogue truncate max-w-[200px] font-semibold text-[16px] leading-[26px] bg-[#2952e3] text-white min-h-[52px] px-4 rounded-full ${styles}`}
       onClick={handleClick}
     >
         {logo && <Image src={MetaMask} alt="MetaMask" width={30} height={30} />}

@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import logo from "../images/logo.png";
 import Image from "next/image";
 import MetaMask from "../images/MetaMask.svg";
-
+import { AiFillPlayCircle } from "react-icons/ai";
 import CustomButton from "./CustomButton";
 import { TransactionContext } from "../context/TransactionContext";
 import { useContext } from "react";
@@ -46,6 +46,7 @@ const Navbar = () => {
         />
       </ul>
       
+      {/* Small Screen Navbar */}
       <div className="flex relative">
         {!toggleMenu && (
           <HiMenuAlt4
