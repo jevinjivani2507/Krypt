@@ -68,7 +68,7 @@ const TransactionsCard = ({
           )}
         </div>
         <Image
-          src={gifUrl || url}
+          src={`https://res.cloudinary.com/demo/image/fetch/`+(gifUrl || url)}
           alt="nature"
           className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
           width={500}

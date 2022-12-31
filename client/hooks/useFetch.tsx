@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const API_KEY = process.env.GIPHY_API;
+const API_KEY = process.env.NEXT_PUBLIC_GIPHY_API_KEY;
 
 interface useFetchProps {
   keyword: string;
@@ -7,7 +7,6 @@ interface useFetchProps {
 
 const useFetch = ({ keyword }: useFetchProps) => {
   const [gifUrl, setGifUrl] = useState("");
-
   const fetchGifs = async () => {
     try {
       const response = await fetch(
