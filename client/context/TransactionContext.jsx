@@ -52,7 +52,7 @@ export const TransactionProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    connectWallet();
+    // connectWallet();
     console.log(state);
     // getAllTransactionss();
   }, []);
@@ -178,6 +178,7 @@ export const TransactionProvider = ({ children }) => {
     <TransactionContext.Provider
       value={{
         currentAccount,
+        connectWallet,
         formData,
         setFormData,
         handleChange,
